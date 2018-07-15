@@ -21,7 +21,7 @@ public class EbayLogin {
   public void testEbay(){
       openSite();
 
-      driver.findElement(By.linkText("register")).click();
+      clickOnRegisterButton();
 
       fillFirstName();
 
@@ -31,6 +31,10 @@ public class EbayLogin {
 
       fillPasswordField();
   }
+
+    public void clickOnRegisterButton() {
+        driver.findElement(By.linkText("register")).click();
+    }
 
 
     public void fillPasswordField() {
