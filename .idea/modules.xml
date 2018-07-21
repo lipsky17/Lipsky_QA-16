@@ -6,6 +6,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Second_web-selenium-byRecorder_project.iml" filepath="$PROJECT_DIR$/.idea/modules/Second_web-selenium-byRecorder_project.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Second_web-selenium-byRecorder_project_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Second_web-selenium-byRecorder_project_main.iml" group="Second_web-selenium-byRecorder_project" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Second_web-selenium-byRecorder_project_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Second_web-selenium-byRecorder_project_test.iml" group="Second_web-selenium-byRecorder_project" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/addressbook.iml" filepath="$PROJECT_DIR$/.idea/modules/addressbook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/addressbook_main.iml" filepath="$PROJECT_DIR$/.idea/modules/addressbook_main.iml" group="addressbook" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/addressbook_test.iml" filepath="$PROJECT_DIR$/.idea/modules/addressbook_test.iml" group="addressbook" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/firstProject.iml" filepath="$PROJECT_DIR$/.idea/modules/firstProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/firstProject_main.iml" filepath="$PROJECT_DIR$/.idea/modules/firstProject_main.iml" group="firstProject" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/firstProject_test.iml" filepath="$PROJECT_DIR$/.idea/modules/firstProject_test.iml" group="firstProject" />
