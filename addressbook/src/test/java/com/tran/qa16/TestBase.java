@@ -100,11 +100,11 @@ public class TestBase {
         wd.findElement(By.name("delete")).click();
     }
 
-    protected void submitContactCreation() {
+    public void submitContactCreation() {
         wd.findElement(By.name("submit")).click();
     }
 
-    protected void fillContactForms(ContactData contactData) {
+    public void fillContactForms(ContactData contactData) {
         wd.findElement(By.name("firstname")).click();
         wd.findElement(By.name("firstname")).clear();
         wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
@@ -127,8 +127,45 @@ public class TestBase {
 
     }
 
-    protected void initCotactCreation() {
+    public void initContactCreation() {
         wd.findElement(By.linkText("add new")).click();
 
+    }
+
+    public void submitContactModification() {
+        wd.findElement(By.name("update")).click();
+    }
+
+    public void modifyContactsForm(ContactData contactData) {
+        wd.findElement(By.name("firstname")).click();
+        wd.findElement(By.name("firstname")).clear();
+        wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
+
+        wd.findElement(By.name("lastname")).click();
+        wd.findElement(By.name("lastname")).clear();
+        wd.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
+
+        wd.findElement(By.name("address")).click();
+        wd.findElement(By.name("address")).clear();
+        wd.findElement(By.name("address")).sendKeys(contactData.getAddress());
+
+        wd.findElement(By.name("mobile")).click();
+        wd.findElement(By.name("mobile")).clear();
+        wd.findElement(By.name("mobile")).sendKeys(contactData.getMobile());
+
+        wd.findElement(By.name("email")).click();
+        wd.findElement(By.name("email")).clear();
+        wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
+
+
+    }
+
+    public void initContactModification() {
+        wd.findElement(By.xpath("//*[@title='Edit']")).click();
+
+    }
+
+    public void selectContact() {
+        wd.findElement(By.id("5")).click();
     }
 }

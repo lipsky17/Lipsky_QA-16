@@ -6,7 +6,7 @@ public class ContactCreationTests extends TestBase {
 
     @Test
     public void testContactCreation() {
-        initCotactCreation();
+        initContactCreation();
         fillContactForms(new ContactData().withFirstname("Dima")
                 .withLastname("Lipsky")
                 .withAddress("Tel Aviv, Shenkin 9")
