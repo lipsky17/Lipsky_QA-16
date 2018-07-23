@@ -7,12 +7,11 @@ public class ContactDeletionTests extends TestBase {
 
     @Test
 
-    public void testContactDeletion(){
+    public void testContactDeletion() {
         selectContact();
         deleteContact();
+        confirmAlert();
     }
 
-    private void deleteContact() {
-        wd.findElement(By.xpath("//*[@value='Delete']")).click();
-    }
+
 }

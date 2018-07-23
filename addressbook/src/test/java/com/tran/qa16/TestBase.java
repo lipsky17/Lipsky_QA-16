@@ -166,6 +166,18 @@ public class TestBase {
     }
 
     public void selectContact() {
-        wd.findElement(By.id("5")).click();
+        wd.findElement(By.id("6")).click();
+    }
+
+    public void deleteContact() {
+        wd.findElement(By.xpath("//*[@value='Delete']")).click();
+    }
+
+    public void confirmAlert() {
+        wd.switchTo().alert().accept();
+    }
+
+    public void dissmisAlert() {
+        wd.switchTo().alert().dismiss();
     }
 }
