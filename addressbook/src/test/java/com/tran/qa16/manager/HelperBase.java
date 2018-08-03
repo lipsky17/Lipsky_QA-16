@@ -33,4 +33,12 @@ public class HelperBase {
         wd.findElement(locator).clear();
         wd.findElement(locator).sendKeys(text);
     }
+
+    public void confirmAlert() {
+        wd.switchTo().alert().accept();
+    }
+
+    public void dismissAlert() {
+        wd.switchTo().alert().dismiss();
+    }
 }
