@@ -20,4 +20,8 @@ public class SessionHelper extends HelperBase {
     public void openSite(String url) {
         wd.navigate().to(url);
     }
+
+    public void logout() {
+        click(By.xpath("//a[contains(text(),'Logout')]"));
+    }
 }
