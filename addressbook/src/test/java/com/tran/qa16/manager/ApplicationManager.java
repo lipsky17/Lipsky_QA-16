@@ -1,103 +1,29 @@
-package com.tran.qa16;
+package com.tran.qa16.manager;
 
+import com.tran.qa16.model.ContactData;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestBase {
-    WebDriver wd;
+public class ApplicationManager {
+    SessionHelper sessionHelper;
+    GroupHelper groupHelper;
+    private WebDriver wd;
 
-    @BeforeMethod
-    public void setUp() {
+    public void start() {
         wd = new ChromeDriver();
         wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        openSite();
-        login();
+        sessionHelper = new SessionHelper(wd);
+        sessionHelper.openSite("http://localhost/addressbook");
+        sessionHelper.login("admin", "secret");
+        groupHelper = new GroupHelper(wd);
     }
 
-    @AfterMethod
-    public void tearDown() {
+    public void stop() {
         wd.quit();
-    }
-
-    public void login() {
-        wd.findElement(By.name("user")).click();
-        wd.findElement(By.name("user")).clear();
-        wd.findElement(By.name("user")).sendKeys("admin");
-
-        wd.findElement(By.name("pass")).click();
-        wd.findElement(By.name("pass")).clear();
-        wd.findElement(By.name("pass")).sendKeys("secret");
-
-        wd.findElement(By.xpath("//*[@value='Login']")).click();
-    }
-
-    public void openSite() {
-        wd.navigate().to("http://localhost/addressbook");
-    }
-
-    public void returnToTheGroupsPage() {
-        wd.findElement(By.linkText("group page")).click();
-    }
-
-    public void submitGroupCreation() {
-        wd.findElement(By.name("submit")).click();
-    }
-
-    public void fillGroupsForm(GroupData groupData) {
-        wd.findElement(By.name("group_name")).click();
-        wd.findElement(By.name("group_name")).clear();
-        wd.findElement(By.name("group_name")).sendKeys(groupData.getName());
-
-        wd.findElement(By.name("group_header")).click();
-        wd.findElement(By.name("group_header")).clear();
-        wd.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
-
-        wd.findElement(By.name("group_footer")).click();
-        wd.findElement(By.name("group_footer")).clear();
-        wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
-    }
-
-    public void initGroupCreation() {
-        wd.findElement(By.name("new")).click();
-    }
-
-    public void goToGroupsPage() {
-        wd.findElement(By.linkText("groups")).click();
-    }
-
-    public void submitGroupModification() {
-        wd.findElement(By.name("update")).click();
-    }
-
-    public void modifyGroupsForm(GroupData groupData) {
-        wd.findElement(By.name("group_name")).click();
-        wd.findElement(By.name("group_name")).clear();
-        wd.findElement(By.name("group_name")).sendKeys(groupData.getName());
-
-        wd.findElement(By.name("group_header")).click();
-        wd.findElement(By.name("group_header")).clear();
-        wd.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
-
-        wd.findElement(By.name("group_footer")).click();
-        wd.findElement(By.name("group_footer")).clear();
-        wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
-    }
-
-    public void initGroupModification() {
-        wd.findElement(By.name("edit")).click();
-    }
-
-    public void selectGroup() {
-        wd.findElement(By.name("selected[]")).click();
-    }
-
-    public void initDeletionOfTheGroup() {
-        wd.findElement(By.name("delete")).click();
     }
 
     public void submitContactCreation() {
@@ -166,7 +92,11 @@ public class TestBase {
     }
 
     public void selectContact() {
-        wd.findElement(By.id("6")).click();
+        wd.findElement(By.name("selected[]")).click();
+    }
+
+    public void selectContactByIndex(int ind) {
+        wd.findElements(By.name("selected[]")).get(ind).click();
     }
 
     public void deleteContact() {
@@ -179,5 +109,42 @@ public class TestBase {
 
     public void dissmisAlert() {
         wd.switchTo().alert().dismiss();
+    }
+
+
+    public int getContactsCount() {
+        return wd.findElements(By.cssSelector("form:nth-child(10) table.sortcompletecallback-applyZebra:nth-child(2) tbody:nth-child(1) tr:nth-child(2) > td.center:nth-child(1)")).size();
+    }
+
+    public boolean isElementPresent(By locator) {
+        try {
+            wd.findElement(locator);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+
+    public boolean isContactPresent() {
+        return isElementPresent(By.name("selected[]"));
+    }
+
+    public void createContact() {
+        initContactCreation();
+        fillContactForms(new ContactData().withFirstname("Dima")
+                .withLastname("Lipsky")
+                .withAddress("Tel Aviv, Shenkin 9")
+                .withMobile("0546987521")
+                .withEmail("123@k.com"));
+        submitContactCreation();
+    }
+
+    public GroupHelper getGroupHelper() {
+        return groupHelper;
+    }
+
+    public SessionHelper getSessionHelper() {
+        return sessionHelper;
     }
 }

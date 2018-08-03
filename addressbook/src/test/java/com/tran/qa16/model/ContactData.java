@@ -1,4 +1,4 @@
-package com.tran.qa16;
+package com.tran.qa16.model;
 
 public class ContactData {
     private String firstname;
