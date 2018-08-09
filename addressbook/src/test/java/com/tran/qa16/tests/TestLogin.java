@@ -2,6 +2,7 @@ package com.tran.qa16.tests;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -26,6 +27,14 @@ public class TestLogin extends TestBase {
         app.getSessionHelper().login("admin", "123456");
 
         Assert.assertFalse(app.isElementPresent(By.xpath("//a[contains(text(),'Logout')]")));
+    }
+
+    @AfterMethod
+
+    public void ensurePostconditionsAfterLoginTest() {
+        if (!app.getSessionHelper().isLoggedIn()) {
+            app.getSessionHelper().login("admin", "secret");
+        }
     }
 
 

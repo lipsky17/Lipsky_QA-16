@@ -32,7 +32,10 @@ public class GroupHelper extends HelperBase {
     }
 
     public void goToGroupsPage() {
-        click(By.cssSelector("[href='group.php']"));
+        if (!isElementPresent(By.xpath("//h1[contains(text(),'Groups')]"))
+                && !isElementPresent(By.name("new"))) {
+            click(By.cssSelector("[href='group.php']"));
+        }
     }
 
     public void submitGroupModification() {

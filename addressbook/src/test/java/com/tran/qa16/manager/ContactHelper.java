@@ -16,11 +16,11 @@ public class ContactHelper extends HelperBase {
 
 
     public void fillContactForms(ContactData contactData) {
-        type(By.name("firstname"),contactData.getFirstname());
-        type(By.name("lastname"),contactData.getLastname());
-        type(By.name("address"),contactData.getAddress());
-        type(By.name("mobile"),contactData.getMobile());
-        type(By.name("email"),contactData.getEmail());
+        type(By.name("firstname"), contactData.getFirstname());
+        type(By.name("lastname"), contactData.getLastname());
+        type(By.name("address"), contactData.getAddress());
+        type(By.name("mobile"), contactData.getMobile());
+        type(By.name("email"), contactData.getEmail());
     }
 
     public void initContactCreation() {
@@ -33,11 +33,11 @@ public class ContactHelper extends HelperBase {
     }
 
     public void modifyContactsForm(ContactData contactData) {
-        type(By.name("firstname"),contactData.getFirstname());
-        type(By.name("lastname"),contactData.getLastname());
-        type(By.name("address"),contactData.getAddress());
-        type(By.name("mobile"),contactData.getMobile());
-        type(By.name("email"),contactData.getEmail());
+        type(By.name("firstname"), contactData.getFirstname());
+        type(By.name("lastname"), contactData.getLastname());
+        type(By.name("address"), contactData.getAddress());
+        type(By.name("mobile"), contactData.getMobile());
+        type(By.name("email"), contactData.getEmail());
 
     }
 
@@ -75,5 +75,8 @@ public class ContactHelper extends HelperBase {
     public boolean isContactPresent() {
         return isElementPresent(By.name("selected[]"));
     }
+
+
+
 
 }
