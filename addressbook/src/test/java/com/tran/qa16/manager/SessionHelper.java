@@ -36,6 +36,6 @@ public class SessionHelper extends HelperBase {
 
 
     public void goToTheHomePage() {
-        click(By.id("maintable"));
+        click(By.xpath("//a[contains(text(),'home')]"));
     }
 }

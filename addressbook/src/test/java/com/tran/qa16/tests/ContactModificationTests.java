@@ -9,6 +9,10 @@ public class ContactModificationTests extends TestBase {
     @Test
 
     public void testContactModification() {
+        if (!app.getSessionHelper().isOnTheHomePage()) {
+            app.getSessionHelper().goToTheHomePage();
+        }
+
         if(!app.getContactHelper().isContactPresent()){
             app.getContactHelper().createContact();
         }
