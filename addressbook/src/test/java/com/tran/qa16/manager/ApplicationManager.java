@@ -31,7 +31,7 @@ public class ApplicationManager {
             wd = new EdgeDriver();
         }
 
-        wd.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         sessionHelper = new SessionHelper(wd);
         sessionHelper.openSite("http://localhost/addressbook");
         sessionHelper.login("admin", "secret");
