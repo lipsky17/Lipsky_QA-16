@@ -7,7 +7,7 @@ public class ContactDeletionTests extends TestBase {
 
     @Test
 
-    public void testContactDeletion() {
+    public void testContactDeletion() throws InterruptedException {
         if (!app.getSessionHelper().isOnTheHomePage()) {
             app.getSessionHelper().goToTheHomePage();
         }
@@ -19,6 +19,7 @@ public class ContactDeletionTests extends TestBase {
         app.getContactHelper().selectContact();
         app.getContactHelper().deleteContact();
         app.getContactHelper().confirmAlert();
+        Thread.sleep(2000);
         int after = app.getContactHelper().getContactsCount();
 
         Assert.assertEquals(after, before - 1);
